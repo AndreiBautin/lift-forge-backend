@@ -6,6 +6,7 @@ admin.initializeApp({
   databaseURL: 'https://lift-forge.firebaseio.com'  // Replace with your actual project ID
 });
 
+const auth = admin.auth();
 const db = admin.firestore();
 
-module.exports = { admin, db };
+module.exports = { admin, db, auth };
