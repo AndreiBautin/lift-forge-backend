@@ -1,7 +1,15 @@
 const express = require('express');
 const cors = require('cors');
-const { auth, db } = require('./firebase');
+const functions = require('firebase-functions');
+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getAuth } = require('firebase-admin/auth');
+const serviceAccount = require('./serviceAccountKey.json');
 const verifyToken = require('./middleware/authMiddleware');
+
+// Initialize Firebase Admin
+initializeApp({
+  credential: cert(serviceAccount),
+});
 
 const app = express();
 app.use(cors({ origin: true }));
